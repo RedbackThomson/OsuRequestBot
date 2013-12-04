@@ -307,7 +307,7 @@ namespace OsuRequestBot
         private void SendMessage(string message)
         {
             //Sends the public message
-            _irc.Sender.PublicMessage("#" + _channel.ToLower(), "[RequestBot] " + message);
+            _irc.Sender.PublicMessage("#" + _channel.ToLower(), "[ORB] " + message);
         }
 
         /// <summary>

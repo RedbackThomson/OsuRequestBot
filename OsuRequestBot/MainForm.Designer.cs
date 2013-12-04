@@ -42,6 +42,7 @@
             this.CurrentLabel = new DevExpress.XtraEditors.LabelControl();
             this.ConnectBTN = new DevExpress.XtraEditors.DropDownButton();
             this.CreditLabel = new DevExpress.XtraEditors.LabelControl();
+            this.TitleLabel = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ChannelBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestGridItemBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestView)).BeginInit();
@@ -53,18 +54,20 @@
             this.ChannelBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ChannelBox.EditValue = "";
-            this.ChannelBox.Location = new System.Drawing.Point(95, 15);
+            this.ChannelBox.Location = new System.Drawing.Point(146, 15);
             this.ChannelBox.Name = "ChannelBox";
-            this.ChannelBox.Size = new System.Drawing.Size(585, 20);
+            this.ChannelBox.Size = new System.Drawing.Size(534, 20);
             this.ChannelBox.TabIndex = 1;
+            this.ChannelBox.ToolTip = "Just the username of the Twitch tv channel (eg. Redback93)";
+            this.ChannelBox.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
             // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(12, 18);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(77, 13);
+            this.labelControl1.Size = new System.Drawing.Size(128, 13);
             this.labelControl1.TabIndex = 2;
-            this.labelControl1.Text = "Twitch Channel:";
+            this.labelControl1.Text = "Twitch Channel Username:";
             // 
             // requestGridItemBindingSource3
             // 
@@ -167,11 +170,22 @@
             this.CreditLabel.Text = "Created by Redback93";
             this.CreditLabel.Click += new System.EventHandler(this.CreditLabel_Click);
             // 
+            // TitleLabel
+            // 
+            this.TitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TitleLabel.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.TitleLabel.Location = new System.Drawing.Point(12, 357);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(81, 13);
+            this.TitleLabel.TabIndex = 8;
+            this.TitleLabel.Text = "Osu Request Bot";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(809, 369);
+            this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.CreditLabel);
             this.Controls.Add(this.ConnectBTN);
             this.Controls.Add(this.CurrentLabel);
@@ -180,7 +194,7 @@
             this.Controls.Add(this.ChannelBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "Osu Request";
+            this.Text = "ORB";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.ChannelBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestGridItemBindingSource3)).EndInit();
@@ -205,6 +219,7 @@
         private DevExpress.XtraEditors.LabelControl CurrentLabel;
         private DevExpress.XtraEditors.DropDownButton ConnectBTN;
         private DevExpress.XtraEditors.LabelControl CreditLabel;
+        private DevExpress.XtraEditors.LabelControl TitleLabel;
 
 
     }

@@ -18,6 +18,7 @@ namespace OsuRequestBot
 
         private const string CommandChar = "!";
         private const string RequestCommand = "request";
+        private const string RequestShortCommand = "req";
         public static bool RequiresMod { get { return _requiresMod; } }
 
         private const string BeatmapRegex = "osu.ppy.sh/b/([0-9]{1,})+";
@@ -69,7 +70,7 @@ namespace OsuRequestBot
 
             #region Request Commands
             //Check through the request commands
-            if (cleanSplit[0] == RequestCommand && cleanSplit.Length >= 2)
+            if((cleanSplit[0] == RequestCommand || cleanSplit[0] == RequestShortCommand) && (cleanSplit.Length >= 2))
             {
                 return ReadRequest(user, cleanMessage.Split(new []{' '}, 2)[1]);
             }
@@ -103,7 +104,7 @@ namespace OsuRequestBot
                 Form.AddRequest(new RequestGridItem
                                           {User = user, RequestDate = DateTime.Now, Song = info.title, Link = CreateOsuDirectURL(info.ranked_id)});
                 return new CommandResponse(CommandResponse.ResponseAction.None)
-                           {Message = "Added request: " + info.title};
+                           {Message = "Added: " + info.title};
             }
 
             return CommandResponse.None;
