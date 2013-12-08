@@ -107,7 +107,7 @@ namespace OsuRequestBot
         {
             List<RequestGridItem> toDelete = new List<RequestGridItem>();
             foreach (var song in _requests)
-                if (song.Song.Contains(newTitle))
+                if (newTitle.Contains(song.Song))
                 {
                     toDelete.Add(song);
                     break;
@@ -223,6 +223,7 @@ namespace OsuRequestBot
     {
         public DateTime RequestDate { get; set; }
         public string User { get; set; }
+        public string Artist { get; set; }
         public string Song { get; set; }
         public string Link { get; set; }
     }

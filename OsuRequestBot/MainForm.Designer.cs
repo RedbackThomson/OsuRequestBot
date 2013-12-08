@@ -36,6 +36,7 @@
             this.RequestView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colRequestDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUser = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colArtist = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLink = new DevExpress.XtraGrid.Columns.GridColumn();
             this.RequestGrid = new DevExpress.XtraGrid.GridControl();
@@ -78,6 +79,7 @@
             this.RequestView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colRequestDate,
             this.colUser,
+            this.colArtist,
             this.colSong,
             this.colLink});
             this.RequestView.GridControl = this.RequestGrid;
@@ -99,7 +101,7 @@
             this.colRequestDate.Name = "colRequestDate";
             this.colRequestDate.Visible = true;
             this.colRequestDate.VisibleIndex = 0;
-            this.colRequestDate.Width = 91;
+            this.colRequestDate.Width = 84;
             // 
             // colUser
             // 
@@ -107,23 +109,31 @@
             this.colUser.Name = "colUser";
             this.colUser.Visible = true;
             this.colUser.VisibleIndex = 1;
-            this.colUser.Width = 118;
+            this.colUser.Width = 109;
+            // 
+            // colArtist
+            // 
+            this.colArtist.FieldName = "Artist";
+            this.colArtist.Name = "colArtist";
+            this.colArtist.Visible = true;
+            this.colArtist.VisibleIndex = 2;
+            this.colArtist.Width = 96;
             // 
             // colSong
             // 
             this.colSong.FieldName = "Song";
             this.colSong.Name = "colSong";
             this.colSong.Visible = true;
-            this.colSong.VisibleIndex = 2;
-            this.colSong.Width = 452;
+            this.colSong.VisibleIndex = 3;
+            this.colSong.Width = 398;
             // 
             // colLink
             // 
             this.colLink.FieldName = "Link";
             this.colLink.Name = "colLink";
             this.colLink.Visible = true;
-            this.colLink.VisibleIndex = 3;
-            this.colLink.Width = 103;
+            this.colLink.VisibleIndex = 4;
+            this.colLink.Width = 93;
             // 
             // RequestGrid
             // 
@@ -220,6 +230,7 @@
         private DevExpress.XtraEditors.DropDownButton ConnectBTN;
         private DevExpress.XtraEditors.LabelControl CreditLabel;
         private DevExpress.XtraEditors.LabelControl TitleLabel;
+        private DevExpress.XtraGrid.Columns.GridColumn colArtist;
 
 
     }

@@ -81,16 +81,17 @@ namespace OsuRequestBot
 
         public static CommandResponse ReadRequest(string user, string url)
         {
+            BeatmapInfo toAdd = null;
             //Is a beatmap request
             var beatmapMatch = Regex.Match(url, BeatmapRegex);
             if(beatmapMatch.Success)
             {
-                /*var id = beatmapMatch.Groups[1].Value;
+                var id = beatmapMatch.Groups[1].Value;
                 int intID;
                 if (!int.TryParse(id, out intID)) return CommandResponse.None;
-                var info = BeatmapFetcher.FetchInfo(intID);*/
-                //todo: Implement beatmap requests
-                return new CommandResponse(CommandResponse.ResponseAction.None) {Message = "Please give a /s/ link. /b/ is not currently supported."};
+                toAdd = BeatmapFetcher.FetchBeatmapInfo(intID);
+
+                
             }
 
             var songMatch = Regex.Match(url, SongRegex);
@@ -99,15 +100,14 @@ namespace OsuRequestBot
                 var id = songMatch.Groups[1].Value;
                 int intID;
                 if (!int.TryParse(id, out intID)) return CommandResponse.None;
-                var info = BeatmapFetcher.FetchInfo(intID);
-
-                Form.AddRequest(new RequestGridItem
-                                          {User = user, RequestDate = DateTime.Now, Song = info.title, Link = CreateOsuDirectURL(info.ranked_id)});
-                return new CommandResponse(CommandResponse.ResponseAction.None)
-                           {Message = "Added: " + info.title};
+                var set = BeatmapFetcher.FetchSetInfo(intID);
+                toAdd = (set.Length >= 1 ? set[set.Length - 1] : null);
             }
 
-            return CommandResponse.None;
+            if(toAdd == null) return CommandResponse.None;
+
+            Form.AddRequest(new RequestGridItem { User = user, RequestDate = DateTime.Now, Artist = toAdd.artist, Song = toAdd.title, Link = CreateOsuDirectURL(toAdd.beatmapset_id) });
+            return new CommandResponse(CommandResponse.ResponseAction.None) { Message = "Added: " + toAdd.artist + " - " + toAdd.title };
         }
 
         public static string CreateOsuDirectURL(int rankedID)
