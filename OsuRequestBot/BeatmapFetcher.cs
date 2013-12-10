@@ -69,6 +69,6 @@ namespace OsuRequestBot
         public int beatmapset_id, beatmap_id, approved, total_length, hit_length, bpm, mode;
         public double difficultyrating;
         public string creator, title, artist, version;
-        public DateTime approved_date, last_update;
+        public DateTime? approved_date, last_update;
     }
 }
