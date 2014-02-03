@@ -19,6 +19,7 @@ namespace OsuRequestBot
         private const string CommandChar = "!";
         private const string RequestCommand = "request";
         private const string RequestShortCommand = "req";
+        private const string NowPlayingCommand = "np";
         public static bool RequiresMod { get { return _requiresMod; } }
 
         private const string BeatmapRegex = "osu.ppy.sh/b/([0-9]{1,})+";
@@ -70,9 +71,13 @@ namespace OsuRequestBot
 
             #region Request Commands
             //Check through the request commands
-            if((cleanSplit[0] == RequestCommand || cleanSplit[0] == RequestShortCommand) && (cleanSplit.Length >= 2))
+            if((cleanSplit[0].ToLower() == RequestCommand || cleanSplit[0].ToLower() == RequestShortCommand) && (cleanSplit.Length >= 2))
             {
                 return ReadRequest(user, cleanMessage.Split(new []{' '}, 2)[1]);
+            }
+            else if(cleanSplit[0] == NowPlayingCommand)
+            {
+                return new CommandResponse ("Current Song: " + Form.CurrentSong, CommandResponse.ResponseAction.None);
             }
             #endregion
 

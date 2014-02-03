@@ -13,6 +13,8 @@ namespace OsuRequestBot
 {
     public partial class MainForm : XtraForm
     {
+        public string CurrentSong = "";
+
         private string _username = "", _password = "";
         private ChatBot _bot;
         private readonly List<RequestGridItem> _requests = new List<RequestGridItem>();
@@ -105,6 +107,7 @@ namespace OsuRequestBot
 
         private void NewTitle(string newTitle)
         {
+            CurrentSong = newTitle;
             List<RequestGridItem> toDelete = new List<RequestGridItem>();
             foreach (var song in _requests)
                 if (newTitle.Contains(song.Song))
@@ -138,7 +141,7 @@ namespace OsuRequestBot
             return (!(string.IsNullOrEmpty(_username) || string.IsNullOrEmpty(_password)));
         }
 
-        private void RequestView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        private void RequestView_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             if(e.Column.FieldName == "Link")
             {
