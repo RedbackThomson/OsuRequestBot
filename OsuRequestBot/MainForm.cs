@@ -244,7 +244,9 @@ namespace OsuRequestBot
         public DateTime RequestDate { get; set; }
         public string User { get; set; }
         public string Artist { get; set; }
+        public string Creator { get; set; }
         public string Song { get; set; }
         public string Link { get; set; }
+        public string Mods { get; set; }
     }
 }

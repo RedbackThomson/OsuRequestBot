@@ -73,18 +73,23 @@ namespace OsuRequestBot
             //Check through the request commands
             if((cleanSplit[0].ToLower() == RequestCommand || cleanSplit[0].ToLower() == RequestShortCommand) && (cleanSplit.Length >= 2))
             {
-                return ReadRequest(user, cleanMessage.Split(new []{' '}, 2)[1]);
+                var split = cleanMessage.Split(new[] {' '}, 3);
+                return ReadRequest(user, split[1], (split.Length > 2 ? split[2] : string.Empty));
             }
-            else if(cleanSplit[0] == NowPlayingCommand)
-            {
+            if(cleanSplit[0] == NowPlayingCommand)
                 return new CommandResponse ("Current Song: " + Form.CurrentSong, CommandResponse.ResponseAction.None);
-            }
             #endregion
 
             return new CommandResponse(CommandResponse.ResponseAction.None);
         }
 
-        public static CommandResponse ReadRequest(string user, string url)
+        private static string GetSongURL(string songName)
+        {
+            //todo: This
+            return "";
+        }
+
+        public static CommandResponse ReadRequest(string user, string url, string mods)
         {
             BeatmapInfo toAdd = null;
             //Is a beatmap request
@@ -111,7 +116,7 @@ namespace OsuRequestBot
 
             if(toAdd == null) return CommandResponse.None;
 
-            Form.AddRequest(new RequestGridItem { User = user, RequestDate = DateTime.Now, Artist = toAdd.artist, Song = toAdd.title, Link = CreateOsuDirectURL(toAdd.beatmapset_id) });
+            Form.AddRequest(new RequestGridItem { User = user, RequestDate = DateTime.Now, Artist = toAdd.artist, Song = toAdd.title, Creator = toAdd.creator, Link = CreateOsuDirectURL(toAdd.beatmapset_id), Mods = mods });
             return new CommandResponse(CommandResponse.ResponseAction.None) { Message = "Added: " + toAdd.artist + " - " + toAdd.title };
         }
 
