@@ -44,6 +44,7 @@
             this.ConnectBTN = new DevExpress.XtraEditors.DropDownButton();
             this.CreditLabel = new DevExpress.XtraEditors.LabelControl();
             this.TitleLabel = new DevExpress.XtraEditors.LabelControl();
+            this.OptionsBTN = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.ChannelBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestGridItemBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestView)).BeginInit();
@@ -166,7 +167,7 @@
             this.ConnectBTN.Name = "ConnectBTN";
             this.ConnectBTN.Size = new System.Drawing.Size(108, 23);
             this.ConnectBTN.TabIndex = 6;
-            this.ConnectBTN.Text = "Connect";
+            this.ConnectBTN.Text = "&Connect";
             this.ConnectBTN.Click += new System.EventHandler(this.ConnectBTN_Click);
             // 
             // CreditLabel
@@ -190,11 +191,21 @@
             this.TitleLabel.TabIndex = 8;
             this.TitleLabel.Text = "Osu Request Bot";
             // 
+            // OptionsBTN
+            // 
+            this.OptionsBTN.Location = new System.Drawing.Point(719, 41);
+            this.OptionsBTN.Name = "OptionsBTN";
+            this.OptionsBTN.Size = new System.Drawing.Size(75, 23);
+            this.OptionsBTN.TabIndex = 9;
+            this.OptionsBTN.Text = "&Options";
+            this.OptionsBTN.Click += new System.EventHandler(this.OptionsBTN_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(809, 369);
+            this.Controls.Add(this.OptionsBTN);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.CreditLabel);
             this.Controls.Add(this.ConnectBTN);
@@ -231,6 +242,7 @@
         private DevExpress.XtraEditors.LabelControl CreditLabel;
         private DevExpress.XtraEditors.LabelControl TitleLabel;
         private DevExpress.XtraGrid.Columns.GridColumn colArtist;
+        private DevExpress.XtraEditors.SimpleButton OptionsBTN;
 
 
     }

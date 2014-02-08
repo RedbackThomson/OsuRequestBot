@@ -26,7 +26,7 @@ namespace OsuRequestBot
             InitializeComponent();
             RequestGrid.DataSource = _requests;
             UpdateRequestFile();
-            LoadLogin();
+            LoadSettings();
             CreateConnectPopup();
         }
 
@@ -136,7 +136,7 @@ namespace OsuRequestBot
             _username = loginForm.UsernameBox.Text;
             _password = loginForm.PasswordBox.Text;
 
-            SaveLogin();
+            SaveSettings();
 
             return (!(string.IsNullOrEmpty(_username) || string.IsNullOrEmpty(_password)));
         }
@@ -185,19 +185,25 @@ namespace OsuRequestBot
             }
         }
 
-        private void SaveLogin()
+        private void SaveSettings()
         {
             Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("OsuRequest");
             key.SetValue("Username", _username);
             key.SetValue("Password", _password);
+
+            var optionsKey = key.CreateSubKey("Options");
+            optionsKey.SetValue("Prefix", ChatBot.Prefix);
             key.Close();
         }
 
-        private void LoadLogin()
+        private void LoadSettings()
         {
             Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("OsuRequest");
             _username = (string) key.GetValue("Username");
             _password = (string) key.GetValue("Password");
+
+            var optionsKey = key.CreateSubKey("Options");
+            ChatBot.Prefix = (!string.IsNullOrEmpty((string) optionsKey.GetValue("Prefix")) ? (string) optionsKey.GetValue("Prefix") : "ORB");
             key.Close();
         }
 
@@ -219,6 +225,17 @@ namespace OsuRequestBot
         private void CreditLabel_Click(object sender, EventArgs e)
         {
             Process.Start("http://osu.ppy.sh/u/Redback93");
+        }
+
+        private void OptionsBTN_Click(object sender, EventArgs e)
+        {
+            var optionsDialog = new Options {PrefixBox = {Text = ChatBot.Prefix}};
+
+            if (optionsDialog.ShowDialog() == DialogResult.OK)
+            {
+                ChatBot.Prefix = optionsDialog.PrefixBox.Text;
+                SaveSettings();
+            }
         }
     }
 

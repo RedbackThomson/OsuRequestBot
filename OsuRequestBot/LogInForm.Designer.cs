@@ -46,9 +46,9 @@
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Location = new System.Drawing.Point(13, 13);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(157, 25);
+            this.labelControl1.Size = new System.Drawing.Size(180, 25);
             this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Twitch Bot Login";
+            this.labelControl1.Text = "ORB Account Login";
             // 
             // labelControl2
             // 

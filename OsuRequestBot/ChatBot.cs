@@ -12,6 +12,9 @@ namespace OsuRequestBot
     class ChatBot
     {
         #region Variable Declaration
+        //Customisation Variables
+        public static string Prefix = "ORB";
+
         //Configuration Information
         private string _channel;
         private string _botUsername, _botPassword;
@@ -307,7 +310,7 @@ namespace OsuRequestBot
         private void SendMessage(string message)
         {
             //Sends the public message
-            _irc.Sender.PublicMessage("#" + _channel.ToLower(), "[ORB] " + message);
+            _irc.Sender.PublicMessage("#" + _channel.ToLower(), string.Format("[{0}] {1}", Prefix, message));
         }
 
         /// <summary>
