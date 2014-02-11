@@ -100,14 +100,12 @@ namespace OsuRequestBot
                 int intID;
                 if (!int.TryParse(id, out intID)) return CommandResponse.None;
                 toAdd = BeatmapFetcher.FetchBeatmapInfo(intID);
-
-                
             }
 
-            var songMatch = Regex.Match(url, SongRegex);
-            if(songMatch.Success)
+            var setMatch = Regex.Match(url, SongRegex);
+            if(setMatch.Success)
             {
-                var id = songMatch.Groups[1].Value;
+                var id = setMatch.Groups[1].Value;
                 int intID;
                 if (!int.TryParse(id, out intID)) return CommandResponse.None;
                 var set = BeatmapFetcher.FetchSetInfo(intID);
@@ -116,8 +114,9 @@ namespace OsuRequestBot
 
             if(toAdd == null) return CommandResponse.None;
 
-            Form.AddRequest(new RequestGridItem { User = user, RequestDate = DateTime.Now, Artist = toAdd.artist, Song = toAdd.title, Creator = toAdd.creator, Link = CreateOsuDirectURL(toAdd.beatmapset_id), Mods = mods });
-            return new CommandResponse(CommandResponse.ResponseAction.None) { Message = "Added: " + toAdd.artist + " - " + toAdd.title };
+            Form.AddRequest(new RequestGridItem { User = user, RequestDate = DateTime.Now, Artist = toAdd.artist, Song = toAdd.title, Creator = toAdd.creator, 
+                Link = CreateOsuDirectURL(toAdd.beatmapset_id), Mods = mods, Difficulty = (setMatch.Success ? "" : toAdd.version), Ranked = (toAdd.approved != -1) });
+            return new CommandResponse(CommandResponse.ResponseAction.None) { Message = "Added: " + toAdd.artist + " - " + toAdd.title + (setMatch.Success ? "" : " [" + toAdd.version + "]") };
         }
 
         public static string CreateOsuDirectURL(int rankedID)

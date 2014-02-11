@@ -74,8 +74,8 @@
             // 
             // SaveBTN
             // 
-            this.SaveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveBTN.Location = new System.Drawing.Point(23, 161);
+            this.SaveBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveBTN.Location = new System.Drawing.Point(23, 125);
             this.SaveBTN.Name = "SaveBTN";
             this.SaveBTN.Size = new System.Drawing.Size(64, 23);
             this.SaveBTN.TabIndex = 11;
@@ -84,9 +84,9 @@
             // 
             // CancelBTN
             // 
-            this.CancelBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelBTN.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBTN.Location = new System.Drawing.Point(93, 161);
+            this.CancelBTN.Location = new System.Drawing.Point(93, 125);
             this.CancelBTN.Name = "CancelBTN";
             this.CancelBTN.Size = new System.Drawing.Size(64, 23);
             this.CancelBTN.TabIndex = 12;
@@ -99,13 +99,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBTN;
-            this.ClientSize = new System.Drawing.Size(169, 196);
+            this.ClientSize = new System.Drawing.Size(169, 160);
             this.Controls.Add(this.CancelBTN);
             this.Controls.Add(this.SaveBTN);
             this.Controls.Add(this.PrefixBox);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Options";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

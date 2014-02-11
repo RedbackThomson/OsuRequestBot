@@ -34,20 +34,22 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.requestGridItemBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.RequestView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colRequestDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colUser = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colArtist = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLink = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMods = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.RequestGrid = new DevExpress.XtraGrid.GridControl();
+            this.requestGridItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CurrentLabel = new DevExpress.XtraEditors.LabelControl();
             this.ConnectBTN = new DevExpress.XtraEditors.DropDownButton();
             this.CreditLabel = new DevExpress.XtraEditors.LabelControl();
             this.TitleLabel = new DevExpress.XtraEditors.LabelControl();
             this.OptionsBTN = new DevExpress.XtraEditors.SimpleButton();
-            this.requestGridItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.colRequestDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colUser = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colArtist = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLink = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMods = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ChannelBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestGridItemBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestView)).BeginInit();
@@ -88,7 +90,9 @@
             this.gridColumn1,
             this.colSong,
             this.colLink,
-            this.colMods});
+            this.colMods,
+            this.gridColumn2,
+            this.gridColumn3});
             this.RequestView.GridControl = this.RequestGrid;
             this.RequestView.Name = "RequestView";
             this.RequestView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
@@ -98,6 +102,84 @@
             this.RequestView.OptionsView.ShowGroupPanel = false;
             this.RequestView.OptionsView.ShowIndicator = false;
             this.RequestView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.RequestView_RowCellClick);
+            // 
+            // colRequestDate
+            // 
+            this.colRequestDate.Caption = "Date";
+            this.colRequestDate.FieldName = "RequestDate";
+            this.colRequestDate.Name = "colRequestDate";
+            this.colRequestDate.Visible = true;
+            this.colRequestDate.VisibleIndex = 0;
+            this.colRequestDate.Width = 58;
+            // 
+            // colUser
+            // 
+            this.colUser.Caption = "Requester";
+            this.colUser.FieldName = "User";
+            this.colUser.Name = "colUser";
+            this.colUser.Visible = true;
+            this.colUser.VisibleIndex = 1;
+            this.colUser.Width = 70;
+            // 
+            // colArtist
+            // 
+            this.colArtist.FieldName = "Artist";
+            this.colArtist.Name = "colArtist";
+            this.colArtist.Visible = true;
+            this.colArtist.VisibleIndex = 3;
+            this.colArtist.Width = 67;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.FieldName = "Creator";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 4;
+            this.gridColumn1.Width = 56;
+            // 
+            // colSong
+            // 
+            this.colSong.FieldName = "Song";
+            this.colSong.Name = "colSong";
+            this.colSong.Visible = true;
+            this.colSong.VisibleIndex = 6;
+            this.colSong.Width = 239;
+            // 
+            // colLink
+            // 
+            this.colLink.Caption = "osu!Direct";
+            this.colLink.FieldName = "Link";
+            this.colLink.Name = "colLink";
+            this.colLink.Visible = true;
+            this.colLink.VisibleIndex = 7;
+            this.colLink.Width = 115;
+            // 
+            // colMods
+            // 
+            this.colMods.FieldName = "Mods";
+            this.colMods.Name = "colMods";
+            this.colMods.Visible = true;
+            this.colMods.VisibleIndex = 8;
+            this.colMods.Width = 65;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Difficulty";
+            this.gridColumn2.FieldName = "Difficulty";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 5;
+            this.gridColumn2.Width = 56;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Ranked";
+            this.gridColumn3.FieldName = "Ranked";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 54;
             // 
             // RequestGrid
             // 
@@ -113,6 +195,10 @@
             this.RequestGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.RequestView});
             this.RequestGrid.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.RequestGrid_PreviewKeyDown);
+            // 
+            // requestGridItemBindingSource
+            // 
+            this.requestGridItemBindingSource.DataSource = typeof(OsuRequestBot.RequestGridItem);
             // 
             // CurrentLabel
             // 
@@ -163,67 +249,6 @@
             this.OptionsBTN.Text = "&Options";
             this.OptionsBTN.Click += new System.EventHandler(this.OptionsBTN_Click);
             // 
-            // requestGridItemBindingSource
-            // 
-            this.requestGridItemBindingSource.DataSource = typeof(OsuRequestBot.RequestGridItem);
-            // 
-            // colRequestDate
-            // 
-            this.colRequestDate.Caption = "Date";
-            this.colRequestDate.FieldName = "RequestDate";
-            this.colRequestDate.Name = "colRequestDate";
-            this.colRequestDate.Visible = true;
-            this.colRequestDate.VisibleIndex = 0;
-            this.colRequestDate.Width = 76;
-            // 
-            // colUser
-            // 
-            this.colUser.FieldName = "User";
-            this.colUser.Name = "colUser";
-            this.colUser.Visible = true;
-            this.colUser.VisibleIndex = 1;
-            this.colUser.Width = 91;
-            // 
-            // colArtist
-            // 
-            this.colArtist.FieldName = "Artist";
-            this.colArtist.Name = "colArtist";
-            this.colArtist.Visible = true;
-            this.colArtist.VisibleIndex = 2;
-            this.colArtist.Width = 90;
-            // 
-            // colSong
-            // 
-            this.colSong.FieldName = "Song";
-            this.colSong.Name = "colSong";
-            this.colSong.Visible = true;
-            this.colSong.VisibleIndex = 4;
-            this.colSong.Width = 309;
-            // 
-            // colLink
-            // 
-            this.colLink.Caption = "osu!Direct";
-            this.colLink.FieldName = "Link";
-            this.colLink.Name = "colLink";
-            this.colLink.Visible = true;
-            this.colLink.VisibleIndex = 5;
-            this.colLink.Width = 152;
-            // 
-            // colMods
-            // 
-            this.colMods.FieldName = "Mods";
-            this.colMods.Name = "colMods";
-            this.colMods.Visible = true;
-            this.colMods.VisibleIndex = 6;
-            this.colMods.Width = 62;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.FieldName = "Creator";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 3;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,6 +296,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMods;
         private System.Windows.Forms.BindingSource requestGridItemBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
 
 
     }

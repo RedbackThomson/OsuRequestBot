@@ -310,7 +310,7 @@ namespace OsuRequestBot
         private void SendMessage(string message)
         {
             //Sends the public message
-            _irc.Sender.PublicMessage("#" + _channel.ToLower(), string.Format("[{0}] {1}", Prefix, message));
+            _irc.Sender.PublicMessage("#" + _channel.ToLower(), (string.IsNullOrEmpty(Prefix) ? string.Format("{0}", message) : string.Format("[{0}] {1}", Prefix, message)));
         }
 
         /// <summary>
