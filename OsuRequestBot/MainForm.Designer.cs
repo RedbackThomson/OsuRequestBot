@@ -40,6 +40,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLink = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWebsite = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMods = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -64,7 +65,7 @@
             this.ChannelBox.EditValue = "";
             this.ChannelBox.Location = new System.Drawing.Point(146, 15);
             this.ChannelBox.Name = "ChannelBox";
-            this.ChannelBox.Size = new System.Drawing.Size(534, 20);
+            this.ChannelBox.Size = new System.Drawing.Size(624, 20);
             this.ChannelBox.TabIndex = 1;
             this.ChannelBox.ToolTip = "Just the username of the Twitch tv channel (eg. Redback93)";
             this.ChannelBox.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
@@ -90,6 +91,7 @@
             this.gridColumn1,
             this.colSong,
             this.colLink,
+            this.colWebsite,
             this.colMods,
             this.gridColumn2,
             this.gridColumn3});
@@ -154,12 +156,20 @@
             this.colLink.VisibleIndex = 7;
             this.colLink.Width = 115;
             // 
+            // colWebsite
+            // 
+            this.colWebsite.Caption = "Web Page";
+            this.colWebsite.FieldName = "Website";
+            this.colWebsite.Name = "colWebsite";
+            this.colWebsite.Visible = true;
+            this.colWebsite.VisibleIndex = 8;
+            // 
             // colMods
             // 
             this.colMods.FieldName = "Mods";
             this.colMods.Name = "colMods";
             this.colMods.Visible = true;
-            this.colMods.VisibleIndex = 8;
+            this.colMods.VisibleIndex = 9;
             this.colMods.Width = 65;
             // 
             // gridColumn2
@@ -190,7 +200,7 @@
             this.RequestGrid.Location = new System.Drawing.Point(12, 68);
             this.RequestGrid.MainView = this.RequestView;
             this.RequestGrid.Name = "RequestGrid";
-            this.RequestGrid.Size = new System.Drawing.Size(782, 289);
+            this.RequestGrid.Size = new System.Drawing.Size(872, 357);
             this.RequestGrid.TabIndex = 3;
             this.RequestGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.RequestView});
@@ -212,7 +222,7 @@
             // 
             this.ConnectBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ConnectBTN.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.SplitButton;
-            this.ConnectBTN.Location = new System.Drawing.Point(686, 12);
+            this.ConnectBTN.Location = new System.Drawing.Point(776, 12);
             this.ConnectBTN.Name = "ConnectBTN";
             this.ConnectBTN.Size = new System.Drawing.Size(108, 23);
             this.ConnectBTN.TabIndex = 6;
@@ -223,7 +233,7 @@
             // 
             this.CreditLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CreditLabel.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.CreditLabel.Location = new System.Drawing.Point(684, 357);
+            this.CreditLabel.Location = new System.Drawing.Point(774, 425);
             this.CreditLabel.Name = "CreditLabel";
             this.CreditLabel.Size = new System.Drawing.Size(110, 13);
             this.CreditLabel.TabIndex = 7;
@@ -234,7 +244,7 @@
             // 
             this.TitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TitleLabel.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.TitleLabel.Location = new System.Drawing.Point(12, 357);
+            this.TitleLabel.Location = new System.Drawing.Point(102, 425);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(81, 13);
             this.TitleLabel.TabIndex = 8;
@@ -242,7 +252,8 @@
             // 
             // OptionsBTN
             // 
-            this.OptionsBTN.Location = new System.Drawing.Point(719, 41);
+            this.OptionsBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OptionsBTN.Location = new System.Drawing.Point(809, 41);
             this.OptionsBTN.Name = "OptionsBTN";
             this.OptionsBTN.Size = new System.Drawing.Size(75, 23);
             this.OptionsBTN.TabIndex = 9;
@@ -253,7 +264,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 369);
+            this.ClientSize = new System.Drawing.Size(899, 437);
             this.Controls.Add(this.OptionsBTN);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.CreditLabel);
@@ -298,6 +309,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn colWebsite;
 
 
     }

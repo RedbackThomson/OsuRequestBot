@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace OsuRequestBot
 {
@@ -19,6 +20,21 @@ namespace OsuRequestBot
         {
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
             Close();
+        }
+
+        private void FileBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog
+                {
+                    FileName = "OsuTitle.txt",
+                    CheckPathExists = true,
+                    Filter = "Text File|*.txt",
+                    Title = "Song Name Output File"
+                };
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ namespace OsuRequestBot
 {
     public partial class MainForm : XtraForm
     {
+        public static string OutputFile = @"C:\SongTitle.txt";
         public string CurrentSong = "";
 
         private string _username = "", _password = "";
@@ -144,9 +145,9 @@ namespace OsuRequestBot
         private void RequestView_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             if(e.Column.FieldName == "Link")
-            {
                 Process.Start(e.CellValue.ToString());
-            }
+            else if(e.Column.FieldName == "Website")
+                Process.Start(e.CellValue.ToString());
         }
 
         private void ConnectBTN_Click(object sender, EventArgs e)
@@ -193,6 +194,7 @@ namespace OsuRequestBot
 
             var optionsKey = key.CreateSubKey("Options");
             optionsKey.SetValue("Prefix", ChatBot.Prefix);
+            optionsKey.SetValue("NowPlaying", Commands.AllowNowPlaying);
             key.Close();
         }
 
@@ -204,6 +206,7 @@ namespace OsuRequestBot
 
             var optionsKey = key.CreateSubKey("Options");
             ChatBot.Prefix = (!string.IsNullOrEmpty((string) optionsKey.GetValue("Prefix")) ? (string) optionsKey.GetValue("Prefix") : "ORB");
+            Commands.AllowNowPlaying = bool.Parse((string)optionsKey.GetValue("NowPlaying", "True"));
             key.Close();
         }
 
@@ -229,11 +232,12 @@ namespace OsuRequestBot
 
         private void OptionsBTN_Click(object sender, EventArgs e)
         {
-            var optionsDialog = new Options {PrefixBox = {Text = ChatBot.Prefix}};
+            var optionsDialog = new Options {PrefixBox = {Text = ChatBot.Prefix}, NowPlayingCheck = {Checked = Commands.AllowNowPlaying}};
 
             if (optionsDialog.ShowDialog() == DialogResult.OK)
             {
                 ChatBot.Prefix = optionsDialog.PrefixBox.Text;
+                Commands.AllowNowPlaying = optionsDialog.NowPlayingCheck.Checked;
                 SaveSettings();
             }
         }
@@ -249,6 +253,7 @@ namespace OsuRequestBot
         public string Difficulty { get; set; }
         public string Song { get; set; }
         public string Link { get; set; }
+        public string Website { get; set; }
         public string Mods { get; set; }
     }
 }

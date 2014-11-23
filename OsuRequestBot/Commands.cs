@@ -21,6 +21,7 @@ namespace OsuRequestBot
         private const string RequestShortCommand = "req";
         private const string NowPlayingCommand = "np";
         public static bool RequiresMod { get { return _requiresMod; } }
+        public static bool AllowNowPlaying { get; set; }
 
         private const string BeatmapRegex = "osu.ppy.sh/b/([0-9]{1,})+";
         private const string SongRegex = "osu.ppy.sh/s/([0-9]{1,})+";
@@ -76,7 +77,7 @@ namespace OsuRequestBot
                 var split = cleanMessage.Split(new[] {' '}, 3);
                 return ReadRequest(user, split[1], (split.Length > 2 ? split[2] : string.Empty));
             }
-            if(cleanSplit[0] == NowPlayingCommand)
+            if(cleanSplit[0] == NowPlayingCommand && AllowNowPlaying)
                 return new CommandResponse ("Current Song: " + Form.CurrentSong, CommandResponse.ResponseAction.None);
             #endregion
 
@@ -92,6 +93,7 @@ namespace OsuRequestBot
         public static CommandResponse ReadRequest(string user, string url, string mods)
         {
             BeatmapInfo toAdd = null;
+            bool isBeatmap = false;
             //Is a beatmap request
             var beatmapMatch = Regex.Match(url, BeatmapRegex);
             if(beatmapMatch.Success)
@@ -100,6 +102,7 @@ namespace OsuRequestBot
                 int intID;
                 if (!int.TryParse(id, out intID)) return CommandResponse.None;
                 toAdd = BeatmapFetcher.FetchBeatmapInfo(intID);
+                isBeatmap = true;
             }
 
             var setMatch = Regex.Match(url, SongRegex);
@@ -115,13 +118,19 @@ namespace OsuRequestBot
             if(toAdd == null) return CommandResponse.None;
 
             Form.AddRequest(new RequestGridItem { User = user, RequestDate = DateTime.Now, Artist = toAdd.artist, Song = toAdd.title, Creator = toAdd.creator, 
-                Link = CreateOsuDirectURL(toAdd.beatmapset_id), Mods = mods, Difficulty = (setMatch.Success ? "" : toAdd.version), Ranked = (toAdd.approved != -1) });
+                Link = CreateOsuDirectURL(toAdd.beatmapset_id), Website = CreateWebsiteURL(isBeatmap ? toAdd.beatmap_id : toAdd.beatmapset_id, isBeatmap),
+                Mods = mods, Difficulty = (setMatch.Success ? "" : toAdd.version), Ranked = (toAdd.approved != -1) });
             return new CommandResponse(CommandResponse.ResponseAction.None) { Message = "Added: " + toAdd.artist + " - " + toAdd.title + (setMatch.Success ? "" : " [" + toAdd.version + "]") };
         }
 
         public static string CreateOsuDirectURL(int rankedID)
         {
             return string.Format(OsuDirectURL, rankedID); 
+        }
+
+        public static string CreateWebsiteURL(int id, bool beatmap)
+        {
+            return ("https://osu.ppy.sh/"+(beatmap ? "b" : "s")+"/" + id);
         }
     }
 
